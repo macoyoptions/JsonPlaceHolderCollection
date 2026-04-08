@@ -35,7 +35,7 @@ jobs:
         run: mkdir -p ./reports
         
       - name: Run JsonPlaceHolder-test
-        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=https://jsonplaceholder.typicode.com
+        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=${{ secrets.BASE_URL }}
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
@@ -50,6 +50,17 @@ jobs:
           
 
 
+
+
+
+
+
+
+
+
+
+
+          
 
 
 
