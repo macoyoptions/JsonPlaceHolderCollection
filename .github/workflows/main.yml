@@ -2,11 +2,13 @@ name: Run Postman API Collection
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
+  
 on:
   push:
     branches:
       - main
+      - dev
+
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * *'   # Runs every day at 9 AM Nigeria time
@@ -33,7 +35,7 @@ jobs:
         run: mkdir -p ./reports
         
       - name: Run JsonPlaceHolder-test
-        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=${{ secrets.BASE_URL }}
+        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=https://jsonplaceholder.typicode.com
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
@@ -42,9 +44,14 @@ jobs:
           path: ./reports/report.html
 
 
+          
 
 
           
+
+
+
+
 
 
 
