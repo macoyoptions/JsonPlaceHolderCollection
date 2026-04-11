@@ -35,7 +35,7 @@ jobs:
         run: mkdir -p ./reports
         
       - name: Run JsonPlaceHolder-test
-        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=${{ secrets.BASE_URL }}
+        run: npx newman run JsonPlaceHolder.postman_collection.json --env-var BaseUrl=${{ secrets.BASE_URL }} --reporters htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
